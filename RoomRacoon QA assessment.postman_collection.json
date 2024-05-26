@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "19e28a6a-9765-4c80-bb33-e16e4a6f5d2e",
+		"name": "RoomRacoon QA assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35170832"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.request.method = 'GET'\r",
+							"pm.request.headers.add({\r",
+							"    key: 'Content-type',\r",
+							"    value: 'application/json'\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"University of Stellenbosch exists\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"  pm.response.body.includes(\"University of Stellenbosch\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://universities.hipolabs.com/search?country=south africa",
+					"protocol": "http",
+					"host": [
+						"universities",
+						"hipolabs",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "south africa"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
